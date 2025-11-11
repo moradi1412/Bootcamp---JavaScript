@@ -1,22 +1,101 @@
 // window.alert("this is an alret! javaScript is running"); 
 
+var playerName = window.prompt("What is your robot's name? ");
+var playerHealth = 100;
+var playerAttack = 10;
+
+console.log(playerName, playerHealth, playerAttack);
+
+
+var enemyName = "Robert"
+var enemyHealth = 50;
+var enemyAttack = 12;
+
+var playerMoney = 10;
+
+
+console.log(enemyName, enemyHealth, enemyAttack);
 
 // this creates a function named "fight"
-
 function fight(params) {
-    window.alert("The fight has begun"); 
+    //alret player that they are starting the round 
+    window.alert("The fight has begun");
+
+
+    var promptFight = window.prompt("Would you like to FIGHT or SKIP this battle? Enter 'FIGHT' or 'SKIP' to choose");
+    //subtract the value of "Playerattack" from the value of "enemyHealh" and use that result to update the value in the enemyHealth variable 
+
+
+    if (promptFight == "fight" || promptFight == "FIGHT") {
+
+        enemyHealth = enemyHealth - playerAttack;
+
+        //log a reasulting message to the console so we know that it worked 
+        console.log(playerName + " attacked " + enemyName + "." + enemyName + " Now has " + enemyHealth + " Health remaining");
+
+
+        if (enemyHealth <= 0) {
+            window.alert(enemyName + "has died");
+        }
+        else {
+            window.alert(enemyName + " still has " + enemyHealth + " health left");
+        }
+
+        //subtract the value of enemyAttack from the value of player and use that result to update the value in the playerHealth variable 
+        playerAttack = playerHealth - enemyAttack;
+
+
+        //log a result message to the console so we know that it worked. 
+        console.log(enemyName + " attacked " + playerName + ". " + playerName + " now has " + playerHealth + " health remaining.");
+
+        if (playerHealth <= 0) {
+            window.alert(playerName + "has died");
+        }
+        else {
+            window.alert(playerName + " still has " + playerHealth + "health left");
+        }
+    }
+    else if (promptFight == "skip" || "SKIP") {
+        //confirm players want to skip 
+        var confrimSkip = window.confirm("Are you sure you'd like to quit");
+
+        if (confrimSkip) {
+            window.alert(playerName + " has decided to skip this fight. GOOD BYE");
+            playerMoney = playerMoney - 2;
+        }
+        else {
+            fight(); 
+        }
+    }
+    else {
+        window.alert("you need to choose a valid option. try again");
+    }
 }
 
+// create function
+// var fight = function() {
+//   window.alert("Welcome to Robot Gladiators!");
+// };
+// execute function
+// fight();
 
-var playerName = window.prompt("What is your robot's name? ");
 
-//fight(); 
-
-window.alert(playerName);
+fight();
 
 
-//another way for debugging 
-console.log(playerName);
+
+
+
+
+
+
+
+
+//window.alert(playerName);
+
+
+//another way for debugging
+//console.log(playerName);
 
 
 
